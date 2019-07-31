@@ -1,6 +1,6 @@
 # city-explorer
 
-**Author**: Anastasia Lebedeva
+**Author**: Anastasia Lebedeva, Morgan T Shaw
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
@@ -25,8 +25,8 @@
 ***
 ## As a user, I want to enter the name of a location so that I do not need to look up the latitude and longitude every time I learn about a new location.
 ***
-* Estimate of time needed to complete: ** **
-* Start time: ** **
+* Estimate of time needed to complete: ** 2 hour**
+* Start time: ** 7:30 pm**
 * Finish time: ** **
 * Actual time needed to complete: ** **
 
@@ -38,7 +38,7 @@
 ***
 ## Weather: As a user, I want to request current weather information so that I can learn more about the typical weather patterns in the location.
 ***
-* Estimate of time needed to complete: ** **
+* Estimate of time needed to complete: **1hour **
 * Start time: ** **
 * Finish time: ** **
 * Actual time needed to complete: ** **
@@ -51,7 +51,7 @@
 ***
 ## Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 ***
-* Estimate of time needed to complete: ** **
+* Estimate of time needed to complete: ** 1hour**
 * Start time: ** **
 * Finish time: ** **
 * Actual time needed to complete: ** **
