@@ -1,39 +1,42 @@
 'use strict';
 
-require('dotenv').config();
-
 const express = require('express');
 const app = express();
 const cors = require('cors');
-
-const PORT = process.env.PORT || 3000;
 app.use(cors());
 
-// app.use(express.static('.front-end'));
+// configure environment variables
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 
-app.get('/location', (request,response)=>{
+
+//routes to handle user request and send the response from our database
+app.get('/location', (req,res) => {
 
   try {
-    let city = require('./data/geo.json');
-    request = "Lynnwood";
-    let test = new City(request, city);
-    console.log(test);
-    response.send(test);
-   
+    let cityData = require('./data/geo.json');
+    let location = new City(req.query.data, cityData);
+    console.log(location);
+    res.send(location);
+
 
   }catch(error){
     console.log('Error');
-    response.status(500).send('the server broke');
+    res.status(500).send('the server issue on /location');
   }
 });
 
-function City (request, data){
-//   this.search_query = data.results[0].address_components[0].long_name;
-  this.search_query=request;
+// constructor function to buld a city object instances
+function City (req, data){
+
+  this.search_query=req;
   this.formatted_query= data.results[0].formatted_address;
   this.latitude = data.results[0].geometry.location.lat;
   this.longitude = data.results[0].geometry.location.lng;
 }
+
+
+// tell our express server to start listening on port PORT
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
 
