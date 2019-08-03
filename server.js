@@ -26,6 +26,7 @@ app.get('/location', (req,res) => {
   }
 });
 
+
 // constructor function to buld a city object instances
 function City (req, data){
 
@@ -35,6 +36,31 @@ function City (req, data){
   this.longitude = data.results[0].geometry.location.lng;
 }
 
+app.get('/weather', (request, response) => {
+  try {
+    const weatherData = getWeather();
+    response.send(weatherData);
+  }
+  catch(error) {
+    console.error(error);
+    response.status(500).send('Status: 500. Server error in /weather');
+  }
+});
+
+function getWeather() {
+  const darkskyData = require('./data/darksky.json');
+  const weatherSummaries = [];
+  darkskyData.daily.data.map((day) => {
+    weatherSummaries.push(new Weather(day));
+  });
+  return weatherSummaries;
+}
+
+//weather constructor function
+function Weather(day) {
+  this.forecast = day.summary;
+  this.time = new Date(day.time * 1000).toString().slice(0, 15);
+}
 
 // tell our express server to start listening on port PORT
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
